@@ -48,3 +48,16 @@ body {
     flex-direction: column;
   }
 }
+.cv-page .text-content {
+    font-size: 16px;
+    padding: 16px 32px;
+}
+.contact-page .text-content {
+    font-size: 14px;
+    padding: 10px 20px;
+}
+.exhibitions-page .text-content {
+    font-size: 18px;
+    padding: 20px 40px;
+}
+
