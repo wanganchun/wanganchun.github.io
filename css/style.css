@@ -1,0 +1,47 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+.nav {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: #eee;
+  list-style: none;
+}
+.nav li a {
+  text-decoration: none;
+  color: #333;
+}
+.hero {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+.work-item {
+  width: 100%;
+  max-width: 400px;
+  margin: 1rem;
+}
+.work-item img {
+  width: 100%;
+  height: auto;
+}
+.fontsize-controls {
+  margin-left: auto;
+}
+.work-description {
+  padding: 1rem;
+}
+@media (max-width: 600px) {
+  .nav {
+    flex-direction: column;
+  }
+}
