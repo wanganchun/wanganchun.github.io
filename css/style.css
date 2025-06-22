@@ -77,16 +77,16 @@ body {
 @media (max-width: 720px) {
     .cv-page .text-content {
         font-size: 14px;
-        padding: 10px 20px;
+        padding: 10px 18px;
     }
 
     .contact-page .text-content {
-        font-size: 12px;
-        padding: 8px 16px;
+        font-size: 14px;
+        padding: 10px 18px;
     }
 
     .exhibitions-page .text-content {
-        font-size: 16px;
-        padding: 12px 24px;
+        font-size: 14px;
+        padding: 10px 18px;
     }
 }
