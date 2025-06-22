@@ -1,63 +1,92 @@
 body {
-  font-family: sans-serif;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
 }
+
 .nav {
-  display: flex;
-  gap: 1rem;
-  padding: 1rem;
-  background: #eee;
-  list-style: none;
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #eee;
+    list-style: none;
 }
-.nav li a {
-  text-decoration: none;
-  color: #333;
-}
+
+    .nav li a {
+        text-decoration: none;
+        color: #333;
+    }
+
 .hero {
-  width: 100%;
-  height: auto;
-  display: block;
+    width: 100%;
+    height: auto;
+    display: block;
 }
+
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
 }
+
 .work-item {
-  width: 100%;
-  max-width: 400px;
-  margin: 1rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 1rem;
 }
-.work-item img {
-  width: 100%;
-  height: auto;
-}
+
+    .work-item img {
+        width: 100%;
+        height: auto;
+    }
+
 .work-description {
-  padding: 1rem;
+    padding: 1rem;
 }
+
+/* 預設文字大小 */
 .text-content {
-  font-size: 16px;
+    font-size: 16px;
 }
-.fontsize-controls {
-  margin: 1rem 0;
-}
-@media (max-width: 600px) {
-  .nav {
-    flex-direction: column;
-  }
-}
+
+/* 針對不同頁面字體大小與內距 */
 .cv-page .text-content {
     font-size: 16px;
     padding: 16px 32px;
 }
+
 .contact-page .text-content {
     font-size: 14px;
     padding: 10px 20px;
 }
+
 .exhibitions-page .text-content {
     font-size: 18px;
     padding: 20px 40px;
 }
 
+/* 響應式：螢幕寬度小於 600px 時，nav 直式 */
+@media (max-width: 600px) {
+    .nav {
+        flex-direction: column;
+    }
+}
+
+/* 響應式：針對不同頁面在手機版調整字體與間距 */
+@media (max-width: 720px) {
+    .cv-page .text-content {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    .contact-page .text-content {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+
+    .exhibitions-page .text-content {
+        font-size: 16px;
+        padding: 12px 24px;
+    }
+}
