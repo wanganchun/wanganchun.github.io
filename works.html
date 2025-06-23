@@ -1,3 +1,4 @@
+<
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -6,48 +7,41 @@
     <title>作品總覽</title>
     <link rel="stylesheet" href="css/style.css" />
     <style>
-        /* 響應式圖片設定 */
-        .work-item img {
-            max-width: 100%;
-            height: auto;
-            display: block;
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 2rem;
+            justify-content: flex-start;
         }
 
-        /* 字體大小切換專用 class */
-        .resizable-text.small {
-            font-size: 14px;
+        .work-item {
+            width: 100%;
+            max-width: 400px;
+            text-align: left;
         }
 
-        .resizable-text.normal {
-            font-size: 16px;
-        }
+            .work-item img {
+                max-width: 100%;
+                height: auto;
+                display: block;
+                border: 1px solid #ccc;
+            }
 
-        .resizable-text.large {
-            font-size: 18px;
-        }
-
-        /* 內文區塊預設字體大小 */
-        .resizable-text {
-            font-size: 16px;
-        }
-
-        /* 其他必要排版 */
         .work-description {
-            padding: 1rem;
+            padding-top: 0.5rem;
         }
 
-        /* 響應式調整（可依需求擴充） */
-        @media (max-width: 720px) {
-            .resizable-text.small {
-                font-size: 12px;
-            }
+        .subtitle {
+            font-size: 0.95rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
 
-            .resizable-text.normal {
-                font-size: 14px;
-            }
-
-            .resizable-text.large {
-                font-size: 16px;
+        @media (max-width: 768px) {
+            .gallery {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -67,52 +61,29 @@
 
     <main>
         <section class="gallery">
+            <!-- 第一件作品 -->
             <div class="work-item">
                 <a href="works/work1.html">
                     <img src="images/work1.jpg" alt="紅色代圖" />
-                    <div class="work-description normal">
+                    <div class="work-description">
                         <h2>紅色代圖作品名稱</h2>
-                        <p>2025｜數位輸出、錄像裝置</p> <!-- 標題範疇 -->
-                        <!-- 字體大小切換按鈕，放在標題與副標題之後，內文之前 -->
-                        <div id="font-size-controller" style="margin: 0.5rem 0;">
-                            <button onclick="setFontSize('small')">小字</button>
-                            <button onclick="setFontSize('normal')">正常</button>
-                            <button onclick="setFontSize('large')">大字</button>
-                        </div>
+                        <div class="subtitle">2025｜數位輸出、錄像裝置</div>
+                    </div>
+                </a>
+            </div>
 
-                        <!-- 內文區塊，加上 .resizable-text -->
-                        <section class="resizable-text normal">
-                            <p>這裡是作品詳細介紹的內文文字，可以調整字體大小。</p>
-                            <p>更多內文段落...</p>
-                        </section>
+            <!-- 第二件作品（綠色代圖） -->
+            <div class="work-item">
+                <a href="works/work2.html">
+                    <img src="images/work2.jpg" alt="綠色代圖" />
+                    <div class="work-description">
+                        <h2>綠色代圖作品名稱</h2>
+                        <div class="subtitle">2024｜平面輸出、手工拼貼</div>
                     </div>
                 </a>
             </div>
         </section>
     </main>
-
-    <script>
-        // 字體大小切換函式
-        function setFontSize(size) {
-            const validSizes = ['small', 'normal', 'large'];
-            if (!validSizes.includes(size)) return;
-
-            const textContainers = document.querySelectorAll('.resizable-text');
-            textContainers.forEach(container => {
-                container.classList.remove(...validSizes);
-                container.classList.add(size);
-            });
-        }
-
-        // 頁面載入時判斷路徑深度，第一層頁面隱藏字體大小切換按鈕
-        document.addEventListener('DOMContentLoaded', () => {
-            const pathSegments = window.location.pathname.split('/').filter(seg => seg.length > 0);
-            if (pathSegments.length <= 1) {
-                const controller = document.getElementById('font-size-controller');
-                if (controller) controller.style.display = 'none';
-            }
-        });
-    </script>
 </body>
 </html>
 
