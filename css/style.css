@@ -45,24 +45,35 @@ body {
     padding: 1rem;
 }
 
-/* 預設文字大小 */
+/* 預設文字大小，改由 resizable-text 控制 */
 .text-content {
+    font-size: 16px; /* 保持原本 text-content 預設大小 */
+    padding: 16px 32px;
+}
+
+/* 字體大小切換專用 class */
+.resizable-text.small {
+    font-size: 14px;
+}
+
+.resizable-text.normal {
     font-size: 16px;
 }
 
-/* 針對不同頁面字體大小與內距 */
+.resizable-text.large {
+    font-size: 18px;
+}
+
+/* 針對不同頁面調整 padding，字體大小由 class 控制 */
 .cv-page .text-content {
-    font-size: 16px;
     padding: 16px 32px;
 }
 
 .contact-page .text-content {
-    font-size: 14px;
     padding: 10px 20px;
 }
 
 .exhibitions-page .text-content {
-    font-size: 18px;
     padding: 20px 40px;
 }
 
@@ -73,20 +84,29 @@ body {
     }
 }
 
-/* 響應式：針對不同頁面在手機版調整字體與間距 */
+/* 響應式：針對不同頁面在手機版調整字體大小和間距 */
 @media (max-width: 720px) {
-    .cv-page .text-content {
+    .resizable-text.small {
+        font-size: 12px;
+    }
+
+    .resizable-text.normal {
         font-size: 14px;
+    }
+
+    .resizable-text.large {
+        font-size: 16px;
+    }
+
+    .cv-page .text-content {
         padding: 10px 18px;
     }
 
     .contact-page .text-content {
-        font-size: 14px;
         padding: 10px 18px;
     }
 
     .exhibitions-page .text-content {
-        font-size: 14px;
         padding: 10px 18px;
     }
 }

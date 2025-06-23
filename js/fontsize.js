@@ -1,7 +1,10 @@
 function setFontSize(size) {
-  const textContainer = document.querySelector('.text-content');
-  if (!textContainer) return;
-  if (size === 'small') textContainer.style.fontSize = '14px';
-  else if (size === 'normal') textContainer.style.fontSize = '16px';
-  else if (size === 'large') textContainer.style.fontSize = '18px';
+    const validSizes = ['small', 'normal', 'large'];
+    if (!validSizes.includes(size)) return;
+
+    const textContainers = document.querySelectorAll('.resizable-text');
+    textContainers.forEach(container => {
+        container.classList.remove(...validSizes);
+        container.classList.add(size);
+    });
 }

@@ -1,36 +1,58 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>作品總覽</title>
-  <link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>作品總覽</title>
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header>
-    <nav>
-  <ul class="nav">
-    <li><a href="index.html">首頁</a></li>
-    <li><a href="exhibitions.html">展覽</a></li>
-    <li><a href="works.html">作品</a></li>
-    <li><a href="cv.html">CV</a></li>
-    <li><a href="contact.html">聯繫方式</a></li>
-  </ul>
-</nav>
+    <header>
+        <nav>
+            <ul class="nav">
+                <li><a href="index.html">首頁</a></li>
+                <li><a href="exhibitions.html">展覽</a></li>
+                <li><a href="works.html">作品</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="contact.html">聯繫方式</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  </header>
-  <main>
-    <section class="gallery">
-      <div class="work-item">
-        <a href="works/work1.html">
-          <img src="images/work1.jpg" alt="紅色代圖">
-          <div class="work-description">
-            <h2>紅色代圖作品名稱</h2>
-            <p>2025｜數位輸出、錄像裝置</p>
-          </div>
-        </a>
-      </div>
-    </section>
-  </main>
+    <!-- 字體大小切換按鈕區塊：方便使用者調整作品介紹文字大小 -->
+    <div style="margin: 1rem 0; padding: 0 1rem;">
+        <button onclick="setFontSize('small')">小字</button>
+        <button onclick="setFontSize('normal')">正常</button>
+        <button onclick="setFontSize('large')">大字</button>
+    </div>
+
+    <main>
+        <section class="gallery">
+            <div class="work-item">
+                <a href="works/work1.html">
+                    <img src="images/work1.jpg" alt="紅色代圖">
+                    <!-- 作品介紹區塊加上 .resizable-text 和預設字體大小 normal -->
+                    <div class="work-description resizable-text normal">
+                        <h2>紅色代圖作品名稱</h2>
+                        <p>2025｜數位輸出、錄像裝置</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- 字體大小切換函式：切換 .resizable-text 元素的字體大小 class -->
+    <script>
+    function setFontSize(size) {
+      const validSizes = ['small', 'normal', 'large'];
+      if (!validSizes.includes(size)) return;
+
+      const textContainers = document.querySelectorAll('.resizable-text');
+      textContainers.forEach(container => {
+        container.classList.remove(...validSizes);
+        container.classList.add(size);
+      });
+    }
+    </script>
 </body>
 </html>
