@@ -21,23 +21,21 @@
 
     <main>
         <section class="gallery">
-            <div class="work-item">
-                <a href="works/work1.html">
-                    <img src="images/work1.jpg" alt="紅色代圖">
-                    <div class="work-description normal">
-                        <h2>紅色代圖作品名稱</h2>
+            <div class="work-description normal">
+                <h2>紅色代圖作品名稱</h2>
+                <p>2025｜數位輸出、錄像裝置</p> <!-- 這是標題範疇 -->
+                <!-- 字體大小切換按鈕，放在標題與副標題之後，內文之前 -->
+                <div id="font-size-controller" style="margin: 0.5rem 0;">
+                    <button onclick="setFontSize('small')">小字</button>
+                    <button onclick="setFontSize('normal')">正常</button>
+                    <button onclick="setFontSize('large')">大字</button>
+                </div>
 
-                        <!-- 字體大小切換按鈕，放在標題和內文之間 -->
-                        <div id="font-size-controller" style="margin: 0.5rem 0;">
-                            <button onclick="setFontSize('small')">小字</button>
-                            <button onclick="setFontSize('normal')">正常</button>
-                            <button onclick="setFontSize('large')">大字</button>
-                        </div>
-
-                        <!-- 內文加上 .resizable-text -->
-                        <p class="resizable-text">2025｜數位輸出、錄像裝置</p>
-                    </div>
-                </a>
+                <!-- 內文區塊，加上 .resizable-text -->
+                <section class="resizable-text">
+                    <p>這裡是作品詳細介紹的內文文字，可以調整字體大小。</p>
+                    <p>更多內文段落...</p>
+                </section>
             </div>
         </section>
     </main>
