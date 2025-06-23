@@ -1,44 +1,71 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>§@«~¸Ô±¡</title>
-    <link rel="stylesheet" href="../css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ä½œå“è©³æƒ…</title>
+  <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
-    <header>
-        <nav>
-            <ul class="nav">
-                <li><a href="../index.html">­º­¶</a></li>
-                <li><a href="../exhibitions.html">®iÄý</a></li>
-                <li><a href="../works.html">§@«~</a></li>
-                <li><a href="../cv.html">CV</a></li>
-                <li><a href="../contact.html">ÁpÃ´¤è¦¡</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <img src="../images/work2.jpg" alt="§@«~2¥D¹Ï">
+  <header>
+    <nav>
+      <ul class="nav">
+        <li><a href="../index.html">é¦–é </a></li>
+        <li><a href="../exhibitions.html">å±•è¦½</a></li>
+        <li><a href="../works.html">ä½œå“</a></li>
+        <li><a href="../cv.html">CV</a></li>
+        <li><a href="../contact.html">è¯ç¹«æ–¹å¼</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div class="carousel-container">
+      <button class="carousel-btn left" onclick="changeSlide(-1)">&#10094;</button>
+      <div class="carousel-slide">
+        <img src="../images/work2-1.jpg" alt="ä½œå“2åœ–1" class="carousel-image active">
+        <img src="../images/work2-2.jpg" alt="ä½œå“2åœ–2" class="carousel-image">
+        <img src="../images/work2-3.jpg" alt="ä½œå“2åœ–3" class="carousel-image">
+      </div>
+      <button class="carousel-btn right" onclick="changeSlide(1)">&#10095;</button>
+    </div>
 
-        <div class="fontsize-controls">
-            <label>¦rÅé¤j¤p¡G</label>
-            <button onclick="setFontSize('small')">¤p</button>
-            <button onclick="setFontSize('normal')">100%</button>
-            <button onclick="setFontSize('large')">¤j</button>
-        </div>
+    <div class="fontsize-controls">
+      <label>å­—é«”å¤§å°ï¼š</label>
+      <button onclick="setFontSize('small')">å°</button>
+      <button onclick="setFontSize('normal')">100%</button>
+      <button onclick="setFontSize('large')">å¤§</button>
+    </div>
 
-        <div class="work-description text-content resizable-text normal">
-            <h1>ºñ¦â¥N¹Ï§@«~¦WºÙ</h1>
-            <h2 class="subtitle">2025¡U¼Æ¦ì¼Q¾¥¡B¾T®Ø¿é¥X</h2>
-            <p>
-                ¦¹§@«~¥Hºñ¦â§@¬°µ²ºc¥DÅé¡A¶H¼x¦¨ªø»P¤º¦b³sµ²¡Cµe­±±Ä¥Î¼Æ¦ì¼Q¾¥§Þ³N§e²{¦ÛµM¦Ù²z¡A·f°t¾T®Ø»s³y¥X§NÀR¦Ó°í©wªºÃä¬É·P¡C
-            </p>
-            <p>
-                ³Ð§@ÆF·P¨Ó¦Û©ó³£¥«Ãä½t¦a±aªººñ¦aÆ[¹î¡A¸Õ¹Ï¦b¨I­«ªº¤H³yÀô¹Ò¤¤´M§ä¬X©Mªº¥i¯à¡C
-            </p>
-        </div>
-    </main>
-    <script src="../js/fontsize.js"></script>
+    <div class="work-description text-content resizable-text normal">
+      <h1>ç¶ è‰²ä½œå“åç¨±</h1>
+      <p class="subtitle">2024ï½œç¹ªç•«ã€è¤‡åˆåª’æ</p>
+      <p>
+        é€™æ˜¯ä¸€ä»¶æ¨¡æ“¬ä½œå“ï¼ŒæŽ¢è¨Žè‡ªç„¶èˆ‡äººå·¥ä»‹é¢çš„ç¢°æ’žï¼Œé€éŽç¶ è‰²çš„é‡è¤‡ä½¿ç”¨å»ºç«‹å°ã€ŒçœŸå¯¦ã€çš„æ‡·ç–‘ã€‚æœ¬ä½œæ–¼ã€Œæœªä¾†æ„Ÿåœ°æ™¯ã€å±•è¦½ä¸­é¦–åº¦äº®ç›¸ã€‚
+      </p>
+    </div>
+  </main>
+  <script src="../js/fontsize.js"></script>
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-image');
+
+    function showSlide(index) {
+      slides.forEach((img, i) => {
+        img.classList.remove('active');
+        if (i === index) {
+          img.classList.add('active');
+        }
+      });
+    }
+
+    function changeSlide(direction) {
+      currentSlide = (currentSlide + direction + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      showSlide(currentSlide);
+    });
+  </script>
 </body>
 </html>
