@@ -37,34 +37,38 @@ body {
 }
 
     .work-item img {
-        width: 100%;
+        max-width: 100%; /* 確保圖片不超出容器 */
         height: auto;
+        display: block;
     }
 
 .work-description {
     padding: 1rem;
 }
 
-/* 預設文字大小，改由 resizable-text 控制 */
+/* 文字排版相關，避免與字體大小切換衝突 */
 .text-content {
-    font-size: 16px; /* 保持原本 text-content 預設大小 */
     padding: 16px 32px;
 }
 
-/* 字體大小切換專用 class */
-.resizable-text.small {
-    font-size: 14px;
+/* 字體大小切換專用 class，設定預設字體大小 */
+.resizable-text {
+    font-size: 16px; /* 預設大小 */
 }
 
-.resizable-text.normal {
-    font-size: 16px;
-}
+    .resizable-text.small {
+        font-size: 14px;
+    }
 
-.resizable-text.large {
-    font-size: 18px;
-}
+    .resizable-text.normal {
+        font-size: 16px;
+    }
 
-/* 針對不同頁面調整 padding，字體大小由 class 控制 */
+    .resizable-text.large {
+        font-size: 18px;
+    }
+
+/* 針對不同頁面調整 padding，字體大小由 .resizable-text 控制 */
 .cv-page .text-content {
     padding: 16px 32px;
 }
