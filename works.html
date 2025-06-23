@@ -19,8 +19,8 @@
         </nav>
     </header>
 
-    <!-- 字體大小切換按鈕區塊：方便使用者調整作品介紹文字大小 -->
-    <div style="margin: 1rem 0; padding: 0 1rem;">
+    <!-- 字體大小切換按鈕區塊，初始會顯示，JS 會判斷是否隱藏 -->
+    <div id="font-size-controller" style="margin: 1rem 0; padding: 0 1rem;">
         <button onclick="setFontSize('small')">小字</button>
         <button onclick="setFontSize('normal')">正常</button>
         <button onclick="setFontSize('large')">大字</button>
@@ -31,8 +31,8 @@
             <div class="work-item">
                 <a href="works/work1.html">
                     <img src="images/work1.jpg" alt="紅色代圖">
-                    <!-- 作品介紹區塊加上 .resizable-text 和預設字體大小 normal -->
-                    <div class="work-description resizable-text normal">
+                    <!-- 作品介紹區塊，第一層頁面不加 .resizable-text -->
+                    <div class="work-description normal">
                         <h2>紅色代圖作品名稱</h2>
                         <p>2025｜數位輸出、錄像裝置</p>
                     </div>
@@ -41,18 +41,29 @@
         </section>
     </main>
 
-    <!-- 字體大小切換函式：切換 .resizable-text 元素的字體大小 class -->
     <script>
-    function setFontSize(size) {
-      const validSizes = ['small', 'normal', 'large'];
-      if (!validSizes.includes(size)) return;
+        // 字體大小切換函式
+        function setFontSize(size) {
+            const validSizes = ['small', 'normal', 'large'];
+            if (!validSizes.includes(size)) return;
 
-      const textContainers = document.querySelectorAll('.resizable-text');
-      textContainers.forEach(container => {
-        container.classList.remove(...validSizes);
-        container.classList.add(size);
-      });
-    }
+            const textContainers = document.querySelectorAll('.resizable-text');
+            textContainers.forEach(container => {
+                container.classList.remove(...validSizes);
+                container.classList.add(size);
+            });
+        }
+
+        // 頁面載入時判斷路徑深度，第一層頁面隱藏字體大小切換按鈕
+        document.addEventListener('DOMContentLoaded', () => {
+            const pathSegments = window.location.pathname.split('/').filter(seg => seg.length > 0);
+            // 例如 /works.html 或 /works/ 都算第一層
+            if (pathSegments.length <= 1) {
+                const controller = document.getElementById('font-size-controller');
+                if (controller) controller.style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
+
