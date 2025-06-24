@@ -81,15 +81,24 @@
                 </a>
             </div>
 
-            <div class="work-item" data-category="靜態影像">
+            <div class="work-item">
                 <a href="works/work2.html">
-                    <img src="images/green.jpg" alt="綠色色塊" />
-                    <div class="work-description">
-                        <h2>綠色作品標題</h2>
-                        <p>2024｜數位攝影、靜態影像</p>
+                    <div class="carousel-container">
+                        <button class="carousel-btn left" onclick="changeSlide(event, this, -1)">&#10094;</button>
+                        <div class="carousel-slide">
+                            <img src="images/work2pre1.jpg" class="carousel-image active" alt="work2預覽1">
+                            <img src="images/work2pre2.jpg" class="carousel-image" alt="work2預覽2">
+                            <img src="images/work2pre3.jpg" class="carousel-image" alt="work2預覽3">
+                        </div>
+                        <button class="carousel-btn right" onclick="changeSlide(event, this, 1)">&#10095;</button>
+                    </div>
+                    <div class="work-description normal">
+                        <h2>綠色作品名稱</h2>
+                        <p class="subtitle">2024｜繪畫、複合媒材</p>
                     </div>
                 </a>
             </div>
+
         </section>
     </main>
 
