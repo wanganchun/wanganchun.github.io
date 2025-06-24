@@ -59,30 +59,50 @@
     </header>
 
     <main>
+        <!-- 篩選器 -->
+        <div class="filter-bar" style="text-align: center; margin: 1rem 0;">
+            <button onclick="filterWorks('all')">全部</button>
+            <button onclick="filterWorks('錄像')">錄像</button>
+            <button onclick="filterWorks('靜態影像')">靜態影像</button>
+            <button onclick="filterWorks('行為')">行為</button>
+            <button onclick="filterWorks('雕塑')">雕塑</button>
+            <button onclick="filterWorks('3D建模')">3D建模</button>
+            <button onclick="filterWorks('攝影')">攝影</button>
+        </div>
+
         <section class="gallery">
-            <!-- 第一件作品 -->
-            <div class="work-item">
+            <div class="work-item" data-category="錄像">
                 <a href="works/work1.html">
                     <img src="images/work1.jpg" alt="紅色代圖" />
                     <div class="work-description">
                         <h2>紅色代圖作品名稱</h2>
-                        <div class="subtitle">2025｜數位輸出、錄像裝置</div>
+                        <p>2025｜數位輸出、錄像裝置</p>
                     </div>
                 </a>
             </div>
 
-            <!-- 第二件作品（綠色代圖） -->
-            <div class="work-item">
+            <div class="work-item" data-category="靜態影像">
                 <a href="works/work2.html">
-                    <img src="images/work2.jpg" alt="綠色代圖" />
+                    <img src="images/green.jpg" alt="綠色色塊" />
                     <div class="work-description">
-                        <h2>綠色代圖作品名稱</h2>
-                        <div class="subtitle">2024｜平面輸出、手工拼貼</div>
+                        <h2>綠色作品標題</h2>
+                        <p>2024｜數位攝影、靜態影像</p>
                     </div>
                 </a>
             </div>
         </section>
     </main>
+
+    <script>
+  function filterWorks(category) {
+    const items = document.querySelectorAll('.work-item');
+    items.forEach(item => {
+      const match = item.getAttribute('data-category');
+      item.style.display = (category === 'all' || match === category) ? 'block' : 'none';
+    });
+  }
+    </script>
+
 </body>
 </html>
 

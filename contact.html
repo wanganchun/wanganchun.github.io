@@ -7,21 +7,36 @@
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="contact-page">
-  <header>
-    <nav>
-  <ul class="nav">
-    <li><a href="index.html">首頁</a></li>
-    <li><a href="exhibitions.html">展覽</a></li>
-    <li><a href="works.html">作品</a></li>
-    <li><a href="cv.html">CV</a></li>
-    <li><a href="contact.html">聯繫方式</a></li>
-  </ul>
-</nav>
+    <header>
+        <nav>
+            <ul class="nav">
+                <li><a href="index.html">首頁</a></li>
+                <li><a href="exhibitions.html">展覽</a></li>
+                <li><a href="works.html">作品</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="contact.html">聯繫方式</a></li>
+            </ul>
+        </nav>
 
-  </header>
-  <main class="text-content">
-    <h1>聯繫方式</h1>
-    <p>電子信箱：nk9282053@gmail.com</p>
-  </main>
+    </header>
+    <main class="contact-page">
+        <section class="text-content">
+            <h1>聯繫方式</h1>
+            <p>歡迎透過表單聯繫我：</p>
+            <form action="mailto:nk9282053@gmail.com" method="post" enctype="text/plain">
+                <label for="name">姓名：</label><br>
+                <input type="text" id="name" name="姓名" required><br><br>
+
+                <label for="email">電子郵件：</label><br>
+                <input type="email" id="email" name="Email" required><br><br>
+
+                <label for="message">訊息：</label><br>
+                <textarea id="message" name="訊息" rows="5" required></textarea><br><br>
+
+                <button type="submit">送出</button>
+            </form>
+        </section>
+    </main>
+
 </body>
 </html>
