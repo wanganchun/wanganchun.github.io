@@ -22,16 +22,14 @@
     <main class="gallery">
         <!-- 紅色作品 -->
         <div class="work-item">
-            <div class="carousel-container" data-carousel-id="work1">
-                <button class="carousel-btn left" onclick="changeSlide('work1', -1)">&#10094;</button>
-                <div class="carousel-slide">
-                    <img src="images/work1pre1.jpg" class="carousel-image active" alt="紅色代圖 1">
-                    <img src="images/work1pre2.jpg" class="carousel-image" alt="紅色代圖 2">
-                    <img src="images/work1pre3.jpg" class="carousel-image" alt="紅色代圖 3">
-                </div>
-                <button class="carousel-btn right" onclick="changeSlide('work1', 1)">&#10095;</button>
-            </div>
             <a href="works/work1.html">
+                <div class="carousel-container">
+                    <div class="carousel-slide">
+                        <img src="images/work1pre1.jpg" alt="紅色預覽1" class="carousel-image active" />
+                        <img src="images/work1pre2.jpg" alt="紅色預覽2" class="carousel-image" />
+                        <img src="images/work1pre3.jpg" alt="紅色預覽3" class="carousel-image" />
+                    </div>
+                </div>
                 <div class="work-description">
                     <h2>紅色代圖作品名稱</h2>
                     <p class="subtitle">2025｜數位輸出、錄像裝置</p>
@@ -41,16 +39,14 @@
 
         <!-- 綠色作品 -->
         <div class="work-item">
-            <div class="carousel-container" data-carousel-id="work2">
-                <button class="carousel-btn left" onclick="changeSlide('work2', -1)">&#10094;</button>
-                <div class="carousel-slide">
-                    <img src="images/work2pre1.jpg" class="carousel-image active" alt="綠色作品 1">
-                    <img src="images/work2pre2.jpg" class="carousel-image" alt="綠色作品 2">
-                    <img src="images/work2pre3.jpg" class="carousel-image" alt="綠色作品 3">
-                </div>
-                <button class="carousel-btn right" onclick="changeSlide('work2', 1)">&#10095;</button>
-            </div>
             <a href="works/work2.html">
+                <div class="carousel-container">
+                    <div class="carousel-slide">
+                        <img src="images/work2pre1.jpg" alt="作品預覽1" class="carousel-image active" />
+                        <img src="images/work2pre2.jpg" alt="作品預覽2" class="carousel-image" />
+                        <img src="images/work2pre3.jpg" alt="作品預覽3" class="carousel-image" />
+                    </div>
+                </div>
                 <div class="work-description">
                     <h2>綠色作品名稱</h2>
                     <p class="subtitle">2024｜繪畫、複合媒材</p>
@@ -60,36 +56,22 @@
     </main>
 
     <script>
-        const carousels = {}; // 每個作品一個獨立 index
+        document.addEventListener("DOMContentLoaded", () => {
+            const carousels = document.querySelectorAll(".carousel-container");
 
-        function changeSlide(id, direction) {
-            if (!carousels[id]) {
-                carousels[id] = 0;
-            }
+            carousels.forEach(container => {
+                const images = container.querySelectorAll(".carousel-image");
+                let index = 0;
 
-            const container = document.querySelector(`.carousel-container[data-carousel-id="${id}"]`);
-            const images = container.querySelectorAll('.carousel-image');
-
-            carousels[id] = (carousels[id] + direction + images.length) % images.length;
-
-            images.forEach((img, i) => {
-                img.classList.toggle('active', i === carousels[id]);
-            });
-        }
-
-        // 初始化每組輪播的第一張圖
-        document.addEventListener('DOMContentLoaded', () => {
-            const allContainers = document.querySelectorAll('.carousel-container');
-            allContainers.forEach(container => {
-                const id = container.getAttribute('data-carousel-id');
-                carousels[id] = 0;
-                const images = container.querySelectorAll('.carousel-image');
-                images.forEach((img, i) => {
-                    img.classList.toggle('active', i === 0);
-                });
+                setInterval(() => {
+                    images[index].classList.remove("active");
+                    index = (index + 1) % images.length;
+                    images[index].classList.add("active");
+                }, 5000); // 每 3 秒換一張
             });
         });
     </script>
+
 </body>
 </html>
 
