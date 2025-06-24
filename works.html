@@ -5,45 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>作品總覽</title>
     <link rel="stylesheet" href="css/style.css" />
-    <style>
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            padding: 2rem;
-            justify-content: flex-start;
-        }
-
-        .work-item {
-            width: 100%;
-            max-width: 400px;
-            text-align: left;
-        }
-
-            .work-item img {
-                max-width: 100%;
-                height: auto;
-                display: block;
-                border: 1px solid #ccc;
-            }
-
-        .work-description {
-            padding-top: 0.5rem;
-        }
-
-        .subtitle {
-            font-size: 0.95rem;
-            color: #666;
-            margin-top: 0.25rem;
-        }
-
-        @media (max-width: 768px) {
-            .gallery {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -58,60 +19,77 @@
         </nav>
     </header>
 
-    <main>
-        <!-- 篩選器 -->
-        <div class="filter-bar" style="text-align: center; margin: 1rem 0;">
-            <button onclick="filterWorks('all')">全部</button>
-            <button onclick="filterWorks('錄像')">錄像</button>
-            <button onclick="filterWorks('靜態影像')">靜態影像</button>
-            <button onclick="filterWorks('行為')">行為</button>
-            <button onclick="filterWorks('雕塑')">雕塑</button>
-            <button onclick="filterWorks('3D建模')">3D建模</button>
-            <button onclick="filterWorks('攝影')">攝影</button>
+    <main class="gallery">
+        <!-- 紅色作品 -->
+        <div class="work-item">
+            <div class="carousel-container" data-carousel-id="work1">
+                <button class="carousel-btn left" onclick="changeSlide('work1', -1)">&#10094;</button>
+                <div class="carousel-slide">
+                    <img src="images/work1pre1.jpg" class="carousel-image active" alt="紅色代圖 1">
+                    <img src="images/work1pre2.jpg" class="carousel-image" alt="紅色代圖 2">
+                    <img src="images/work1pre3.jpg" class="carousel-image" alt="紅色代圖 3">
+                </div>
+                <button class="carousel-btn right" onclick="changeSlide('work1', 1)">&#10095;</button>
+            </div>
+            <a href="works/work1.html">
+                <div class="work-description">
+                    <h2>紅色代圖作品名稱</h2>
+                    <p class="subtitle">2025｜數位輸出、錄像裝置</p>
+                </div>
+            </a>
         </div>
 
-        <section class="gallery">
-            <div class="work-item" data-category="錄像">
-                <a href="works/work1.html">
-                    <img src="images/work1.jpg" alt="紅色代圖" />
-                    <div class="work-description">
-                        <h2>紅色代圖作品名稱</h2>
-                        <p>2025｜數位輸出、錄像裝置</p>
-                    </div>
-                </a>
+        <!-- 綠色作品 -->
+        <div class="work-item">
+            <div class="carousel-container" data-carousel-id="work2">
+                <button class="carousel-btn left" onclick="changeSlide('work2', -1)">&#10094;</button>
+                <div class="carousel-slide">
+                    <img src="images/work2pre1.jpg" class="carousel-image active" alt="綠色作品 1">
+                    <img src="images/work2pre2.jpg" class="carousel-image" alt="綠色作品 2">
+                    <img src="images/work2pre3.jpg" class="carousel-image" alt="綠色作品 3">
+                </div>
+                <button class="carousel-btn right" onclick="changeSlide('work2', 1)">&#10095;</button>
             </div>
-
-            <div class="work-item">
-                <a href="works/work2.html">
-                    <div class="carousel-container">
-                        <button class="carousel-btn left" onclick="changeSlide(event, this, -1)">&#10094;</button>
-                        <div class="carousel-slide">
-                            <img src="images/work2pre1.jpg" class="carousel-image active" alt="work2預覽1">
-                            <img src="images/work2pre2.jpg" class="carousel-image" alt="work2預覽2">
-                            <img src="images/work2pre3.jpg" class="carousel-image" alt="work2預覽3">
-                        </div>
-                        <button class="carousel-btn right" onclick="changeSlide(event, this, 1)">&#10095;</button>
-                    </div>
-                    <div class="work-description normal">
-                        <h2>綠色作品名稱</h2>
-                        <p class="subtitle">2024｜繪畫、複合媒材</p>
-                    </div>
-                </a>
-            </div>
-
-        </section>
+            <a href="works/work2.html">
+                <div class="work-description">
+                    <h2>綠色作品名稱</h2>
+                    <p class="subtitle">2024｜繪畫、複合媒材</p>
+                </div>
+            </a>
+        </div>
     </main>
 
     <script>
-  function filterWorks(category) {
-    const items = document.querySelectorAll('.work-item');
-    items.forEach(item => {
-      const match = item.getAttribute('data-category');
-      item.style.display = (category === 'all' || match === category) ? 'block' : 'none';
-    });
-  }
-    </script>
+        const carousels = {}; // 每個作品一個獨立 index
 
+        function changeSlide(id, direction) {
+            if (!carousels[id]) {
+                carousels[id] = 0;
+            }
+
+            const container = document.querySelector(`.carousel-container[data-carousel-id="${id}"]`);
+            const images = container.querySelectorAll('.carousel-image');
+
+            carousels[id] = (carousels[id] + direction + images.length) % images.length;
+
+            images.forEach((img, i) => {
+                img.classList.toggle('active', i === carousels[id]);
+            });
+        }
+
+        // 初始化每組輪播的第一張圖
+        document.addEventListener('DOMContentLoaded', () => {
+            const allContainers = document.querySelectorAll('.carousel-container');
+            allContainers.forEach(container => {
+                const id = container.getAttribute('data-carousel-id');
+                carousels[id] = 0;
+                const images = container.querySelectorAll('.carousel-image');
+                images.forEach((img, i) => {
+                    img.classList.toggle('active', i === 0);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
 
