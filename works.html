@@ -20,14 +20,12 @@
     </header>
 
     <main class="gallery">
-        <!-- 紅色作品 -->
+        <!-- 紅色作品：只有一張圖，不輪播 -->
         <div class="work-item">
             <a href="works/work1.html">
-                <div class="carousel-preview-container">
-                    <div class="carousel-preview-slide">
-                        <img src="images/work1pre1.jpg" alt="紅色預覽1" class="carousel-preview-image active" />
-                        <img src="images/work1pre2.jpg" alt="紅色預覽2" class="carousel-preview-image" />
-                        <img src="images/work1pre3.jpg" alt="紅色預覽3" class="carousel-preview-image" />
+                <div class="preview-carousel-container">
+                    <div class="preview-carousel-slide">
+                        <img src="images/work1pre1.jpg" alt="紅色預覽" class="preview-carousel-image active" />
                     </div>
                 </div>
                 <div class="work-description">
@@ -37,15 +35,14 @@
             </a>
         </div>
 
-
-        <!-- 綠色作品 -->
+        <!-- 綠色作品：多張圖，自動輪播 -->
         <div class="work-item">
             <a href="works/work2.html">
-                <div class="carouse2-preview-container">
-                    <div class="carousel-preview-slide">
-                        <img src="images/work2pre1.jpg" alt="綠色預覽1" class="carouse2-preview-image active" />
-                        <img src="images/work2pre2.jpg" alt="綠色預覽2" class="carouse2-preview-image" />
-                        <img src="images/work2pre3.jpg" alt="綠色預覽3" class="carouse2-preview-image" />
+                <div class="preview-carousel-container">
+                    <div class="preview-carousel-slide">
+                        <img src="images/work2pre1.jpg" alt="綠色預覽1" class="preview-carousel-image active" />
+                        <img src="images/work2pre2.jpg" alt="綠色預覽2" class="preview-carousel-image" />
+                        <img src="images/work2pre3.jpg" alt="綠色預覽3" class="preview-carousel-image" />
                     </div>
                 </div>
                 <div class="work-description">
@@ -58,21 +55,20 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const carousels = document.querySelectorAll(".carousel-container");
+            const carousels = document.querySelectorAll(".preview-carousel-container");
 
             carousels.forEach(container => {
-                const images = container.querySelectorAll(".carousel-image");
-                let index = 0;
-
-                setInterval(() => {
-                    images[index].classList.remove("active");
-                    index = (index + 1) % images.length;
-                    images[index].classList.add("active");
-                }, 5000); // 每 3 秒換一張
+                const images = container.querySelectorAll(".preview-carousel-image");
+                if (images.length > 1) {
+                    let index = 0;
+                    setInterval(() => {
+                        images[index].classList.remove("active");
+                        index = (index + 1) % images.length;
+                        images[index].classList.add("active");
+                    }, 5000);
+                }
             });
         });
     </script>
-
 </body>
 </html>
-

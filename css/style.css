@@ -34,14 +34,15 @@ body {
     width: 100%;
     max-width: 400px;
     margin: 1rem auto; /* 水平置中 */
-    text-align: center; /* 圖片下文字置中 */
+    text-align: center;
 }
 
     .work-item img {
         max-width: 100%;
         height: auto;
         display: block;
-        margin: 0 auto; /* 圖片置中 */
+        margin: 0 auto;
+        pointer-events: none; /* 避免圖片被點擊導致進入作品頁 */
     }
 
 .work-description {
@@ -53,9 +54,9 @@ body {
     padding: 16px 32px;
 }
 
-/* 字體大小切換專用 class，設定預設字體大小 */
+/* 字體大小切換 */
 .resizable-text {
-    font-size: 16px; /* 預設大小 */
+    font-size: 16px;
 }
 
     .resizable-text.small {
@@ -70,7 +71,7 @@ body {
         font-size: 18px;
     }
 
-/* 針對不同頁面調整 padding，字體大小由 .resizable-text 控制 */
+/* 頁面特定 padding */
 .cv-page .text-content {
     padding: 16px 32px;
 }
@@ -83,14 +84,14 @@ body {
     padding: 20px 40px;
 }
 
-/* 響應式：螢幕寬度小於 600px 時，nav 直式 */
+/* 響應式導覽列（手機） */
 @media (max-width: 600px) {
     .nav {
         flex-direction: column;
     }
 }
 
-/* 響應式：針對不同頁面在手機版調整字體大小和間距 */
+/* 響應式字體與間距 */
 @media (max-width: 720px) {
     .resizable-text.small {
         font-size: 12px;
@@ -104,18 +105,13 @@ body {
         font-size: 16px;
     }
 
-    .cv-page .text-content {
-        padding: 10px 18px;
-    }
-
-    .contact-page .text-content {
-        padding: 10px 18px;
-    }
-
+    .cv-page .text-content,
+    .contact-page .text-content,
     .exhibitions-page .text-content {
         padding: 10px 18px;
     }
 }
+
 /* 次標題樣式 */
 .subtitle {
     font-size: 0.9em;
@@ -124,12 +120,13 @@ body {
     margin-bottom: 20px;
 }
 
-/* 輪播圖容器與按鈕樣式 */
+/* 輪播圖樣式 */
 .carousel-container {
     position: relative;
     max-width: 100%;
     margin: auto;
     overflow: hidden;
+    pointer-events: none; /* 禁用整個輪播的滑動與點擊 */
 }
 
 .carousel-slide {
@@ -148,6 +145,7 @@ body {
         display: block;
     }
 
+/* 輪播按鈕 */
 .carousel-btn {
     position: absolute;
     top: 50%;
@@ -158,6 +156,7 @@ body {
     padding: 1rem;
     cursor: pointer;
     z-index: 10;
+    pointer-events: auto; /* 讓按鈕本身可以點擊 */
 }
 
     .carousel-btn.left {
@@ -172,4 +171,16 @@ body {
     .carousel-btn {
         padding: 0.5rem;
     }
+}
+/* 預覽輪播專用：總覽頁作品輪播樣式 */
+.preview-carousel-container {
+    ...
+}
+
+.preview-carousel-slide {
+    ...
+}
+
+.preview-carousel-image {
+    ...
 }
