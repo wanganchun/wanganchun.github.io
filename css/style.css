@@ -184,3 +184,28 @@ body {
 .preview-carousel-image {
     ...
 }
+/* --- 預覽用自動輪播樣式（只用於 works.html）--- */
+.preview-carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.preview-carousel-slide {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.preview-carousel-image {
+    display: none;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+    .preview-carousel-image.active {
+        display: block;
+    }
